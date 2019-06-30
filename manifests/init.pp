@@ -60,11 +60,17 @@ class cxtracker (
     require => Package['cxtracker'], 
   }
 
+  file { $spooldir:
+    ensure  => 'directory',
+    user    => '$user,
+    require => Package['cxtracker'],
+  }
+
   service { 'cxtracker':
     ensure  => 'running',
     enabled => true,
     flags   => $service_flags,
-    require => File['/etc/rc.d/cxtracker'],
+    require => File[$spooldir],
   }
 
 

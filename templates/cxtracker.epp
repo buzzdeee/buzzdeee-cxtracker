@@ -1,0 +1,10 @@
+#!/bin/ksh
+#
+# $OpenBSD$
+
+daemon="/usr/local/bin/cxtracker -D"
+daemon_user="<%= $::cxtracker::user %>"
+
+. /etc/rc.d/rc.subr
+
+rc_cmd $1

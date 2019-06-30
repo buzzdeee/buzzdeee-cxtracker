@@ -52,14 +52,6 @@ class cxtracker (
     ensure => installed,
   }
 
-  file { '/etc/rc.d/cxtracker':
-    user    => 'root',
-    group   => 'bin',
-    mode    => '0755',
-    content => epp('cxtracker/cxtracker.epp'),
-    require => Package['cxtracker'], 
-  }
-
   file { $spooldir:
     ensure  => 'directory',
     user    => '$user,

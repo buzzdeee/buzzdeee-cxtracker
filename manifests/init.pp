@@ -54,13 +54,12 @@ class cxtracker (
 
   file { $spooldir:
     ensure  => 'directory',
-    user    => '$user,
+    owner   => $user,
     require => Package['cxtracker'],
   }
 
   service { 'cxtracker':
     ensure  => 'running',
-    enabled => true,
     flags   => $service_flags,
     require => File[$spooldir],
   }
